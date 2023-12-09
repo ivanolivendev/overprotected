@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
-app.all('/', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Yo!')
-})
-app.listen(process.env.PORT || 3000)
+const route = require("../overprotected/src/routes/routes")
+
+
+app.use(route)
+app.use(express.json())
+
+
+app.listen(3000)
